@@ -1,14 +1,21 @@
 class Solution 
 {
+    // Cycke in a Linked List Concept
     public int findDuplicate(int[] nums) 
     {
-        HashSet <Integer> h = new HashSet<>();
-        for(int i=0; i<nums.length;i++)
+        int s = nums[0];
+        int f = nums[0];
+        do
         {
-            if (h.contains(nums[i]))
-                return nums[i];
-            h.add(nums[i]);
+            s=nums[s];
+            f=nums[nums[f]];
+        }while(s!=f);
+        s=nums[0];
+        while(s!=f)
+        {
+            s=nums[s];
+            f=nums[f];
         }
-        return -1;
+        return s;
     }
 }
