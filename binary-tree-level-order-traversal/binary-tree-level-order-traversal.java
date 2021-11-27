@@ -13,27 +13,31 @@
  *     }
  * }
  */
-class Solution {
+
+// Time complexity : O(n)
+// Space Complexity : O(n)
+class Solution 
+{
     public List<List<Integer>> levelOrder(TreeNode root) 
     {
-        Queue<TreeNode> q = new LinkedList<>();
-        List<List<Integer>> lev = new ArrayList<List<Integer>>();
+        Queue <TreeNode> q = new LinkedList<>();
+        List<List<Integer>> lev = new ArrayList<>();
         if (root == null)
             return lev;
         q.offer(root);
         while(!q.isEmpty())
         {
-            int size = q.size();
-            List<Integer> sub = new ArrayList<Integer>();
-            for (int i=0;i<size;i++)
+            List<Integer> row = new ArrayList<>();
+            int n = q.size();
+            for (int i=0; i<n;i++)
             {
-                if (q.peek().left != null)
+                if (q.peek().left!=null)
                     q.offer(q.peek().left);
                 if (q.peek().right!=null)
                     q.offer(q.peek().right);
-                sub.add(q.poll().val);
+                row.add(q.poll().val);
             }
-            lev.add(sub);
+            lev.add(row);
         }
         return lev;
     }
