@@ -18,14 +18,14 @@ class Solution {
     {
         if (root==null)
             return true;
-        return isMirror(root.left, root.right);
+        return sym(root.left, root.right);
     }
-    public boolean isMirror(TreeNode l , TreeNode r)
+    public boolean sym(TreeNode l, TreeNode r)
     {
-        if (l==null && r==null)
-            return true;
-        if (l==null || r==null)
-            return false;    
-        return (l.val == r.val) && isMirror(l.left, r.right)&& isMirror(r.left,l.right);
+        if (l==null||r==null)
+            return l==r;
+        if(l.val!=r.val)
+            return false;
+        return (sym(l.left, r.right) && sym(r.left, l.right));
     }
 }
