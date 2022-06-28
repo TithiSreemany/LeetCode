@@ -3,8 +3,6 @@ class Solution
     public void rotate(int[] nums, int k) 
     {
         int l = nums.length;
-        if(l==1)
-            return;
         k=k%l;
         reverse(nums, 0, l-1);
         reverse(nums, 0, k-1);
